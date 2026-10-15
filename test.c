@@ -10,4 +10,7 @@ int main(){
   void *alloc = OSE_malloc(initial_allocation_size);
 
   printf("initial allocation of %ld: %p\n", initial_allocation_size, alloc);
+  void *realloced = OSE_realloc(alloc, 0x100);
+  printf("original: %p, realloced: %p\n", alloc, realloced);
+  OSE_free(realloced);
 }
