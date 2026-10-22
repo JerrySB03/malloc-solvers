@@ -35,15 +35,16 @@ realloc(old_p, new_size):
     if new_p == NULL:
         return NULL
 
-    old_size = read_size(old_p)
-    copy min(old_size, new_size) bytes from old_p to new_p
+    if old_p != NULL:
+        old_size = read_size(old_p)
+        copy min(old_size, new_size) bytes from old_p to new_p
     free(old_p)
 
     return new_p
 ```
 
- - Pokud `p == NULL` tak se `realloc` chová stejně jako `malloc`.
- - Pokud `realloc` selže vrátí `NULL` a data na adrese`p` zůstávají nezměněna.
+ - Pokud `old_p == NULL` tak se `realloc` chová stejně jako `malloc`.
+ - Pokud `realloc` selže vrátí `NULL` a data na adrese `old_p` zůstávají nezměněna.
 
 ## Reference
 Zadání je zjednodušený standard libc `malloc`, který je dostupný [zde](https://man7.org/linux/man-pages/man3/malloc.3.html).
