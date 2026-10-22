@@ -35,13 +35,13 @@ void test_edge_cases(){
   {
     long *alloc = OSE_malloc(16);
     *alloc = 0xdeadbeef;
-    long *reallocated = OSE_realloc(alloc, SIZE_MAX);
+    long *reallocated = OSE_realloc(alloc, SIZE_MAX / 2);
     if(reallocated == NULL){
       assert(*alloc == 0xdeadbeef);
     } else {
       assert(*reallocated == 0xdeadbeef);
-      for(size_t i = 0; i < SIZE_MAX; i+=(SIZE_MAX / 65536)){
-        volatile long value = *reallocated; // Access *reallocated
+      for(size_t i = 0; i < (SIZE_MAX / 2); i+=(SIZE_MAX / 65536)){
+        volatile long value = reallocated[i]; // Access reallocated[i] - check that memory actually exists
         (void)value;
       }
       fprintf(stderr, "\n\nWhat, how? OSE_realloc(*p, SIZE_MAX) didn't fail\n\n");
