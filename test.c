@@ -94,8 +94,11 @@ void run_benchmarks(){
 
 int main(){
   run_basic_tests();
+  puts("run_basic_tests() passed");
   test_edge_cases();
+  puts("test_edge_cases() passed");
   run_benchmarks();
+  puts("run_benchmarks() passed");
 
   assert(failed_allocations == 0);
 }
