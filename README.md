@@ -1,9 +1,9 @@
 # Zadání - vlastní heap alokátor
 Vytvořte vlastní heap alokátor v programovacím jazyce C který imlementuje následující header file:
 ```c
-void *malloc(size_t size);
-void free(void *p);
-void *realloc(void *p, size_t size);
+void *OSE_malloc(size_t size);
+void OSE_free(void *p);
+void *OSE_realloc(void *p, size_t size);
 ```
 
 Pro implementaci nepoužívejte funkce `malloc`, `free` a `realloc` ze standardní C knihovny ani jiné alokační funkce z jiných knihoven.
@@ -13,7 +13,7 @@ Tyto 3 funkce společně tvoří základ heap alokace v programovacím jazyce C,
 
 ### malloc
 ```c
-void *malloc(size_t size);
+void *OSE_malloc(size_t size);
 ```
 Funkce `malloc` dynamicky alokuje heap pamět z virtuálního adresního prostoru a vrátí pointer s minimální velikostí `size`.
  - Může vrátit `NULL`, což signalizuje chybu při alokaci.
@@ -21,7 +21,7 @@ Funkce `malloc` dynamicky alokuje heap pamět z virtuálního adresního prostor
 
 ### free
 ```c
-void free(void *p);
+void OSE_free(void *p);
 ```
 `free` uvolní paměť po alokaci přes `malloc`.
  - Pokud `p == NULL`, nic se neděje.
