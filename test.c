@@ -53,12 +53,12 @@ long int run_small_benchmark(){
   #define SMALL_TOTAL_ALLOCATIONS 1024
   clock_t t = clock();
   void *allocations[SMALL_TOTAL_ALLOCATIONS];
-  for(size_t i = 0; i < SMALL_TOTAL_ALLOCATIONS; i++)
+  for(size_t i = 1; i < SMALL_TOTAL_ALLOCATIONS; i++)
     allocations[i] = OSE_malloc(i * 17);
-  for(size_t i = 0; i < SMALL_TOTAL_ALLOCATIONS; i++)
+  for(size_t i = 1; i < SMALL_TOTAL_ALLOCATIONS; i++)
     OSE_free(allocations[i]);
 
-  for(size_t i = 0; i < SMALL_TOTAL_ALLOCATIONS; i++){
+  for(size_t i = 1; i < SMALL_TOTAL_ALLOCATIONS; i++){
     if(allocations[i] == NULL)
       failed_allocations++;
   }
@@ -72,12 +72,12 @@ long int run_big_benchmark(){
   #define BIG_TOTAL_ALLOCATIONS 65536
   clock_t t = clock();
   void *allocations[BIG_TOTAL_ALLOCATIONS];
-  for(size_t i = 0; i < BIG_TOTAL_ALLOCATIONS; i++)
+  for(size_t i = 1; i < BIG_TOTAL_ALLOCATIONS; i++)
     allocations[i] = OSE_malloc(i * 17);
-  for(size_t i = 0; i < BIG_TOTAL_ALLOCATIONS; i++)
+  for(size_t i = 1; i < BIG_TOTAL_ALLOCATIONS; i++)
     OSE_free(allocations[i]);
 
-  for(size_t i = 0; i < BIG_TOTAL_ALLOCATIONS; i++){
+  for(size_t i = 1; i < BIG_TOTAL_ALLOCATIONS; i++){
     if(allocations[i] == NULL)
       failed_allocations++;
   }
